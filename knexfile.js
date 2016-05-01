@@ -3,10 +3,11 @@
 module.exports = {
 
   development: {
-    // debug: true,
-    client: 'sqlite3',
+    client: 'postgresql',
     connection: {
-      filename: './dev.sqlite3'
+      database: 'monarchs_db',
+      user:     process.env.USER,
+      password: process.env.PASSWORD
     },
     seeds: {
       directory: './seeds'
@@ -14,26 +15,10 @@ module.exports = {
     useNullAsDefault: true
   },
 
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'monarchs_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  },
-
   production: process.env.DATABASE_URL || {
     client: 'postgresql',
     connection: {
-      database: 'monarchs_db',
+      database: 'my_db',
       user:     'username',
       password: 'password'
     },

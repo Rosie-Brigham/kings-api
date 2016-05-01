@@ -8,15 +8,12 @@ function all() {
 }
 
 function year(year) {
-  var dateYear = new Date(year).getTime()
+  var dateYear = new Date(year)
   var years = knex('monarchs').where('ruled_from', '<=', dateYear).andWhere('ruled_to', '>=', dateYear);
 
   return years
 }
 
-// function name(name) {
-
-// }
 
 module.exports = {
   all: all,
